@@ -11,18 +11,22 @@ public class Lending {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idlending")
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "start")
     private String start;
 
+    @Column(name = "end")
     private String end;
 
     private boolean extended;
 
-    @Column(name = "idUser")
+    @OneToOne
+    @JoinColumn(name = "idUser")
     private User user;
 
-    @Column(name = "idCopy")
+    @OneToOne
+    @JoinColumn(name = "idCopy")
     private Copy copy;
 }

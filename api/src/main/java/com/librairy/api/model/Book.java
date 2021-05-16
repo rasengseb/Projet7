@@ -11,11 +11,13 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idbook")
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "author")
     private String author;
 
     @Column(name = "total")
@@ -24,6 +26,4 @@ public class Book {
     @Column(name = "dispo")
     private int exemplaireDispo;
 
-    @Column(name = "idLibrairy")
-    private Librairy library;
 }

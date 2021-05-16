@@ -1,9 +1,11 @@
 package com.librairy.api.controller;
 
+import com.librairy.api.model.User;
 import com.librairy.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -11,5 +13,55 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/user/{id}")
+    public Optional<User> getUser(@PathVariable("id") final Long id){
+        return userService.getUser(id);
+    }
 
+    @PostMapping("/user")
+    public User createUser(@RequestBody User user){
+        return userService.saveUser(user);
+    }
+
+    @PutMapping("/user/{id}")
+    public User updateUser(@PathVariable("id") final Long id, @RequestBody User user){
+        Optional<User> u = userService.getUser(id);
+        if (u.isPresent()){
+            User currentUser = u.get();
+
+            String firstName = user.getFirstName();
+            if (firstName != null){
+                currentUser.setFirstName(firstName);
+            }
+
+            String lastName = user.getLastName();
+            if (lastName != null){
+                currentUser.setLastName(lastName);
+            }
+            String mail = user.getMail();
+            if(mail != null){
+                currentUser.setMail(mail);
+            }
+            String mdp = user.getMdp();
+            if(mdp != null){
+                currentUser.setMdp(mdp);
+            }
+
+            String pseudo = user.getPseudo();
+            if(pseudo != null){
+                currentUser.setPseudo(pseudo);
+            }
+
+            userService.saveUser(currentUser);
+            return currentUser;
+        }
+        else{
+            return null;
+        }
+    }
+
+    @DeleteMapping("/user/{id}")
+    public void deleteUser(@PathVariable("id") final Long id){
+        userService.deleteUser(id);
+    }
 }

@@ -11,9 +11,14 @@ public class Copy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idcopy")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "idBook")
+    @OneToOne
+    @JoinColumn(name = "idBook")
     private Book book;
+
+    @OneToOne
+    @JoinColumn(name = "idLibrairy")
+    private Librairy library;
 }

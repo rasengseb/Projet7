@@ -1,12 +1,56 @@
 package com.librairy.api.controller;
 
+import com.librairy.api.model.Lending;
 import com.librairy.api.service.LendingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class LendingController {
 
     @Autowired
     private LendingService lendingService;
+
+    @GetMapping("/lending/{id}")
+    public Optional<Lending> getLending(@PathVariable("id") final Long id){
+        return lendingService.getLending(id);
+    }
+
+    @PostMapping("lending")
+    public Lending createLending(@RequestBody Lending lending){
+        return lendingService.saveLending(lending);
+    }
+
+    @PutMapping("/lending/{id}")
+    public Lending updateLending(@PathVariable("id") final Long id, @RequestBody Lending lending){
+        Optional<Lending> l = lendingService.getLending(id);
+        if (l.isPresent()){
+            Lending currentLending = l.get();
+
+            String start = lending.getStart();
+            if (start != null){
+                currentLending.setStart(start);
+            }
+            String end = lending.getEnd();
+            if (end != null){
+                currentLending.setEnd(end);
+            }
+            boolean extended = lending.isExtended();
+            if (extended != false){
+                currentLending.setExtended(extended);
+            }
+            lendingService.saveLending(currentLending);
+            return currentLending;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @DeleteMapping("/lending/{id}")
+    public void deleteLending(@PathVariable("id") final Long id){
+        lendingService.deleteLending(id);
+    }
 }
