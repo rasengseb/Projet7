@@ -15,7 +15,7 @@ public class LibrairyService {
     @Autowired
     private LibrairyRepository librairyRepository;
 
-    public Optional<Librairy> getLibrairy(final Long id){
+    public Optional<Librairy> getLibrairy(int id){
         return librairyRepository.findById(id);
     }
 
@@ -23,7 +23,7 @@ public class LibrairyService {
         return librairyRepository.findAll();
     }
 
-    public void deleteLibrairy(final Long id){
+    public void deleteLibrairy(int id){
         librairyRepository.deleteById(id);
     }
 

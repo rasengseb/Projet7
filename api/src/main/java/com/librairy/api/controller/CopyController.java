@@ -5,7 +5,7 @@ import com.librairy.api.service.CopyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.ExcludeDefaultListeners;
+
 import java.util.Optional;
 
 @RestController
@@ -15,7 +15,7 @@ public class CopyController {
     private CopyService copyService;
 
     @GetMapping("/copy/{id}")
-    public Optional<Copy> getCopy(@PathVariable("id") final Long id) {
+    public Optional<Copy> getCopy(@PathVariable("id") int id) {
         return copyService.getCopy(id);
     }
 
@@ -25,7 +25,7 @@ public class CopyController {
     }
 
     @DeleteMapping("/copy/{id}")
-    public void deleteCopy(@PathVariable("id") final Long id){
+    public void deleteCopy(@PathVariable("id") int id){
         copyService.deleteCopy(id);
     }
 

@@ -14,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/user/{id}")
-    public Optional<User> getUser(@PathVariable("id") final Long id){
+    public Optional<User> getUser(@PathVariable("id") int id){
         return userService.getUser(id);
     }
 
@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PutMapping("/user/{id}")
-    public User updateUser(@PathVariable("id") final Long id, @RequestBody User user){
+    public User updateUser(@PathVariable("id") int id, @RequestBody User user){
         Optional<User> u = userService.getUser(id);
         if (u.isPresent()){
             User currentUser = u.get();
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable("id") final Long id){
+    public void deleteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
     }
 }

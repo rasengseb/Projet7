@@ -15,7 +15,7 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/book/{id}")
-    public Optional<Book> getBook(@PathVariable("id") final Long id){
+    public Optional<Book> getBook(@PathVariable("id") int id){
         return bookService.getBook(id);
     }
 
@@ -25,7 +25,7 @@ public class BookController {
     }
 
     @PutMapping("/book/{id}")
-    public Book updateBook(@PathVariable("id") final Long id, @RequestBody Book book){
+    public Book updateBook(@PathVariable("id") int id, @RequestBody Book book){
         Optional<Book> b = bookService.getBook(id);
         if(b.isPresent()){
             Book currentBook = b.get();
@@ -50,7 +50,7 @@ public class BookController {
     }
 
     @DeleteMapping("/book/{id}")
-    public void deleteBook(@PathVariable("id") final Long id){
+    public void deleteBook(@PathVariable("id") int id){
         bookService.deleteBook(id);
     }
 }

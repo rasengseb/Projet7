@@ -14,7 +14,7 @@ public class LendingController {
     private LendingService lendingService;
 
     @GetMapping("/lending/{id}")
-    public Optional<Lending> getLending(@PathVariable("id") final Long id){
+    public Optional<Lending> getLending(@PathVariable("id") int id){
         return lendingService.getLending(id);
     }
 
@@ -24,7 +24,7 @@ public class LendingController {
     }
 
     @PutMapping("/lending/{id}")
-    public Lending updateLending(@PathVariable("id") final Long id, @RequestBody Lending lending){
+    public Lending updateLending(@PathVariable("id") int id, @RequestBody Lending lending){
         Optional<Lending> l = lendingService.getLending(id);
         if (l.isPresent()){
             Lending currentLending = l.get();
@@ -50,7 +50,7 @@ public class LendingController {
     }
 
     @DeleteMapping("/lending/{id}")
-    public void deleteLending(@PathVariable("id") final Long id){
+    public void deleteLending(@PathVariable("id") int id){
         lendingService.deleteLending(id);
     }
 }

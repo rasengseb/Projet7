@@ -15,7 +15,7 @@ public class CopyService {
     @Autowired
     private CopyRepository copyRepository;
 
-    public Optional<Copy> getCopy(final Long id){
+    public Optional<Copy> getCopy(int id){
         return copyRepository.findById(id);
     }
 
@@ -23,7 +23,7 @@ public class CopyService {
         return copyRepository.findAll();
     }
 
-    public void deleteCopy(final Long id){
+    public void deleteCopy(int id){
         copyRepository.deleteById(id);
     }
 

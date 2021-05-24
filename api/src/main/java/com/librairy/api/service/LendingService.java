@@ -15,7 +15,7 @@ public class LendingService {
     @Autowired
     private LendingRepository lendingRepository;
 
-    public Optional<Lending> getLending(final Long id){
+    public Optional<Lending> getLending(int id){
         return lendingRepository.findById(id);
     }
 
@@ -23,7 +23,7 @@ public class LendingService {
         return lendingRepository.findAll();
     }
 
-    public void deleteLending(final Long id){
+    public void deleteLending(int id){
         lendingRepository.deleteById(id);
     }
 
