@@ -30,4 +30,14 @@ public class UserService {
         User savedUser = userRepository.save(user);
         return savedUser;
     }
+
+    public boolean doublonCheck (User user){
+        if(userRepository.findByPseudo(user.getPseudo()) == null){
+            return false;
+        } else if(userRepository.findByMail(user.getMail()) == null){
+            return false;
+        } else{
+            return true;
+        }
+    }
 }

@@ -20,7 +20,11 @@ public class UserController {
 
     @PostMapping("/user")
     public User createUser(@RequestBody User user){
-        return userService.saveUser(user);
+        if(userService.doublonCheck(user)){
+            return null;
+        } else {
+            return userService.saveUser(user);
+        }
     }
 
     @PutMapping("/user/{id}")
