@@ -1,9 +1,10 @@
 package com.librairy.api.service;
 
 import com.librairy.api.model.User;
+import com.librairy.api.model.UserDto;
 import com.librairy.api.repository.UserRepository;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,6 +14,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public Optional<User> getUser(int id){
         return userRepository.findById(id);
@@ -39,5 +43,12 @@ public class UserService {
         } else{
             return true;
         }
+    }
+
+    public User registerNewUserAccount(UserDto accountDto){
+        User user = new User();
+        user.setPseudo(accountDto.getUsername());
+        user.setMdp(passwordEncoder.encode(accountDto.getPassword()));
+        return userRepository.save(user);
     }
 }
