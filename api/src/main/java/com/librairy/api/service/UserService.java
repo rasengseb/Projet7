@@ -1,7 +1,6 @@
 package com.librairy.api.service;
 
 import com.librairy.api.model.User;
-import com.librairy.api.model.UserDto;
 import com.librairy.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,6 +30,7 @@ public class UserService {
     }
 
     public User saveUser(User user){
+        user.setMdp(passwordEncoder.encode(user.getMdp()));
         User savedUser = userRepository.save(user);
         return savedUser;
     }
@@ -43,12 +43,5 @@ public class UserService {
         } else{
             return true;
         }
-    }
-
-    public User registerNewUserAccount(UserDto accountDto){
-        User user = new User();
-        user.setPseudo(accountDto.getUsername());
-        user.setMdp(passwordEncoder.encode(accountDto.getPassword()));
-        return userRepository.save(user);
     }
 }

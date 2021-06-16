@@ -1,17 +1,31 @@
 package com.librairy.api.controller;
 
 import com.librairy.api.model.User;
+import com.librairy.api.model.UserDto;
 import com.librairy.api.service.UserService;
+import javafx.beans.binding.ObjectExpression;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @GetMapping("/user/{id}")
     public Optional<User> getUser(@PathVariable("id") int id){
@@ -67,5 +81,20 @@ public class UserController {
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
+    }
+
+    @PostMapping("/user/")
+    public ResponseEntity login(@RequestBody User user){
+        try{
+            String pseudo = user.getPseudo();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(pseudo, user.getMdp()));
+            String token = jwtTokenProvider.createToken(username, this.users.findByPseudo(pseudo).getRoles());
+            Map<Object, Object> model = new HashMap<>();
+            model.put("pseudo", pseudo);
+            model.put("token", token);
+            return ok(model);
+        } catch (AuthenticationException e){
+            throw new BadCredentialsException("Invalid Pseudo/password supplied");
+        }
     }
 }
