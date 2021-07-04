@@ -17,6 +17,10 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public User getUser(String pseudo){
+        return userRepository.findByPseudo(pseudo);
+    }
+
     public Optional<User> getUser(int id){
         return userRepository.findById(id);
     }

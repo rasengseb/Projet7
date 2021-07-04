@@ -82,19 +82,4 @@ public class UserController {
     public void deleteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
     }
-
-    @PostMapping("/user/")
-    public ResponseEntity login(@RequestBody User user){
-        try{
-            String pseudo = user.getPseudo();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(pseudo, user.getMdp()));
-            String token = jwtTokenProvider.createToken(username, this.users.findByPseudo(pseudo).getRoles());
-            Map<Object, Object> model = new HashMap<>();
-            model.put("pseudo", pseudo);
-            model.put("token", token);
-            return ok(model);
-        } catch (AuthenticationException e){
-            throw new BadCredentialsException("Invalid Pseudo/password supplied");
-        }
-    }
 }
