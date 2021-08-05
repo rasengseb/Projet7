@@ -1,4 +1,4 @@
-package com.librairy.webapp.repository;
+package com.librairy.webapp.proxy;
 
 import com.librairy.webapp.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -15,7 +15,7 @@ public interface UserProxy {
     @GetMapping(value = "/user")
     Optional<User> getUser(int id);
 
-    @PostMapping(value = "/user")
-    void createUser(@RequestBody("user") User user);
+//    @PostMapping(value = "/user")
+//    void createUser(@RequestBody("user") User user);
 
 }

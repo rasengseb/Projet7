@@ -1,4 +1,4 @@
-package com.librairy.webapp.repository;
+package com.librairy.webapp.proxy;
 
 import org.springframework.cloud.openfeign.FeignClient;
 

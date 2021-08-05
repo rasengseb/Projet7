@@ -5,7 +5,6 @@ import com.librairy.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +16,11 @@ public class BookController {
     @GetMapping("/book/{id}")
     public Optional<Book> getBook(@PathVariable("id") int id){
         return bookService.getBook(id);
+    }
+
+    @GetMapping("/book")
+    public Iterable<Book> getBooks(){
+        return bookService.getBooks();
     }
 
     @PostMapping("/book")
