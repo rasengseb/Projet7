@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Librairy</title>
+</head>
+<body>
+<h1>List Librairy</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${librairies.empty}">
+        <td colspan="3">Aucune librairie d'enregistrée</td>
+    </tr>
+    <tr th:each="librairies: ${librairy}">
+        <td><span th:text="${librairy.getName()}">Nom</span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
