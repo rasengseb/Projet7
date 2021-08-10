@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Librairy</title>
+</head>
+<body>
+<h1>List Lending</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Utilisateur</th>
+        <th>Début</th>
+        <th>Fin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${lendings.empty}">
+        <td colspan="3">Aucun prêt enregistré</td>
+    </tr>
+    <tr th:each="lendings: ${lending}">
+        <td><span th:text="${lending.getUtilisateur().getPseudo()}">Utilisateur :</span></td>
+        <td><span th:text="${lending.getStart()}">Début :</span></td>
+        <td><span th:text="${lending.getEnd()}">Fin :</span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
