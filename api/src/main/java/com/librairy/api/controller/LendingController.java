@@ -1,5 +1,6 @@
 package com.librairy.api.controller;
 
+import com.librairy.api.model.Book;
 import com.librairy.api.model.Lending;
 import com.librairy.api.service.LendingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,14 @@ public class LendingController {
         return lendingService.getLending(id);
     }
 
-    @PostMapping("lending")
+    @PostMapping("/lending")
     public Lending createLending(@RequestBody Lending lending){
         return lendingService.saveLending(lending);
+    }
+
+    @GetMapping("/lending")
+    public Iterable<Lending> getLendings(){
+        return lendingService.getLendings();
     }
 
     @PutMapping("/lending/{id}")

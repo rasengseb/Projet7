@@ -1,5 +1,6 @@
 package com.librairy.api.controller;
 
+import com.librairy.api.model.Book;
 import com.librairy.api.model.Librairy;
 import com.librairy.api.service.LibrairyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,14 @@ public class LibrairyController {
     @Autowired
     private LibrairyService librairyService;
 
-    @GetMapping("librairy/{id}")
+    @GetMapping("/librairy/{id}")
     public Optional<Librairy> getLibrairy(@PathVariable("id") int id){
         return librairyService.getLibrairy(id);
+    }
+
+    @GetMapping("/librairy")
+    public Iterable<Librairy> getLibrayries(){
+        return librairyService.getLibrairy();
     }
 
     @PostMapping("/librairy")
