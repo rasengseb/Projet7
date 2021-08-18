@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Librairy</title>
+</head>
+<body>
+<h1>Inscription</h1>
+
+<form th:action="@{/user}" th:object="${user}" method="POST">
+    Pseudo:
+    <input type="text" th:field="*{pseudo}"/>
+    <br/>
+    Mot de Passe:
+    <input type="text" th:field="*{mdp}"/>
+    <br/>
+    Prénom:
+    <input type="text" th:field="*{firstName}"/>
+    <br/>
+    Nom:
+    <input type="text" th:field="*{lastName}"/>
+    <br/>
+    Mail:
+    <input type="text" th:field="*{mail}"/>
+    <br/>
+    <input type="submit" value="Inscription"/>
+</form>
+</body>
+</html>

@@ -1,22 +1,12 @@
 package com.librairy.api.controller;
 
 import com.librairy.api.model.User;
-import com.librairy.api.model.UserDto;
 import com.librairy.api.service.UserService;
-import javafx.beans.binding.ObjectExpression;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-
-import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 public class UserController {

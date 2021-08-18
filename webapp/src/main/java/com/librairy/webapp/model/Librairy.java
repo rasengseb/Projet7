@@ -7,5 +7,7 @@ public class Librairy {
 
     private int id;
 
+    private String adresse;
+
     private String name;
 }

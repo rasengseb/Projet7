@@ -11,14 +11,17 @@
     <thead>
     <tr>
         <th>Nom</th>
+        <th>Adresse</th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${librairies.empty}">
         <td colspan="3">Aucune librairie d'enregistrée</td>
     </tr>
-    <tr th:each="librairies: ${librairy}">
+    <tr th:each="librairy: ${librairies}">
         <td><span th:text="${librairy.getName()}">Nom</span></td>
+        <td><span th:text="${librairy.getAdresse()}">Adresse</span> </td>
+        <td><a th:href="">Consulter</a> </td>
     </tr>
     </tbody>
 </table>
