@@ -26,4 +26,8 @@ public class Book {
     @Column(name = "dispo")
     private int exemplaireDispo;
 
+    @OneToOne
+    @JoinColumn(name = "idLibrairy")
+    private Librairy librairy;
+
 }
