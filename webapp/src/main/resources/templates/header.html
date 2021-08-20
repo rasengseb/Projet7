@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Librairy</title>
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{}"/>-->
+</head>
+<body>
+<div th:fragment="header">
+    <header class="fixed-top navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg">
+<!--            <a class="navbar-brand" th:href="">-->
+<!--                Bibliothèques de Lyon-->
+<!--            </a>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+<!--                        <a th:href="/">Rechercher</a>-->
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/user}">Inscription</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+</div>
+</body>
+</html>

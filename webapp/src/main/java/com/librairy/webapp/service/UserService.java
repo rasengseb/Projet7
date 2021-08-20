@@ -11,8 +11,8 @@ public class UserService {
     @Autowired
     private UserProxy userProxy;
 
-    public User saveUser(User user){
-        User savedUser = userProxy.saveUser(user);
+    public User createUser(User user){
+        User savedUser = userProxy.createUser(user);
         return savedUser;
     }
 }

@@ -1,6 +1,5 @@
 package com.librairy.api.controller;
 
-import com.librairy.api.model.Book;
 import com.librairy.api.model.Librairy;
 import com.librairy.api.service.LibrairyService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,6 +6,8 @@
 <!--    <link rel="stylesheet" type="text/css" th:href="@{}"/>-->
 </head>
 <body>
+<div th:insert="header :: header"></div>
+
 <h1>List Livres</h1>
 
 <table>
@@ -19,9 +21,9 @@
     <tr th:if="${books.empty}">
         <td colspan="3">Aucun livre enregistré</td>
     </tr>
-    <tr th:each="books: ${books}">
-        <td><span th:text="${books.getTitle()}">Titre</span></td>
-        <td><span th:text="${books.getAuthor()}">Autheur</span></td>
+    <tr th:each="book: ${books}">
+        <td><span th:text="${book.getTitle()}">Titre</span></td>
+        <td><span th:text="${book.getAuthor()}">Autheur</span></td>
     </tr>
     </tbody>
 </table>

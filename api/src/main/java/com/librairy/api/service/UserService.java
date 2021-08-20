@@ -41,11 +41,11 @@ public class UserService {
 
     public boolean doublonCheck (User user){
         if(userRepository.findByPseudo(user.getPseudo()) == null){
-            return false;
-        } else if(userRepository.findByMail(user.getMail()) == null){
-            return false;
-        } else{
             return true;
+        } else if(userRepository.findByMail(user.getMail()) == null){
+            return true;
+        } else{
+            return false;
         }
     }
 }

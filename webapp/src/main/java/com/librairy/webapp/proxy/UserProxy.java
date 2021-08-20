@@ -15,6 +15,6 @@ public interface UserProxy {
     Optional<User> getUser(int id);
 
     @PostMapping("/user")
-    User saveUser(User user);
+    User createUser(User user);
 
 }
