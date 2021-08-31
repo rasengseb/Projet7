@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.Optional;
 
 @Controller
 public class BookController {
@@ -20,5 +23,13 @@ public class BookController {
         model.addAttribute("books", listBook);
 
         return "listBook";
+    }
+
+    @GetMapping("/book/{id}")
+    public String getBook(@PathVariable("id") int id, Model model){
+        Optional<Book> book = bookService.getBook(id);
+        model.addAttribute("book", book);
+
+        return "afficherBook";
     }
 }

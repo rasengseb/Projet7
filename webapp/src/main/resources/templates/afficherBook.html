@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Librairy</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{}"/>-->
+</head>
+<body>
+<div th:insert="header :: header"></div>
+
+<p th:text="${book.getTitle()}"></p> <br/>
+<p th:text="${book.getAuthor()}"></p> <br/>
+<p th:text="${book.getLibrairy()}"></p> <br/>
+<p th:text="${book.getExemplaireDispo()}"></p> <br/>
+</body>
+</html>

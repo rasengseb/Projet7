@@ -5,13 +5,15 @@ import com.librairy.webapp.proxy.BookProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class BookService {
 
     @Autowired
     private BookProxy bookProxy;
 
-    public Book getBook(int id){
+    public Optional<Book> getBook(int id){
         return bookProxy.getBook(id);
     }
 
