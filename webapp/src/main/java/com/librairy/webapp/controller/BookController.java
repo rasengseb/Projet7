@@ -28,7 +28,7 @@ public class BookController {
     @GetMapping("/book/{id}")
     public String getBook(@PathVariable("id") int id, Model model){
         Optional<Book> book = bookService.getBook(id);
-        model.addAttribute("book", book);
+        model.addAttribute("book", book.get());
 
         return "afficherBook";
     }

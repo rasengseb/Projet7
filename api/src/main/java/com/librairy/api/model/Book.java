@@ -30,4 +30,7 @@ public class Book {
     @JoinColumn(name = "idLibrairy")
     private Librairy librairy;
 
+    public Book(){
+
+    }
 }
