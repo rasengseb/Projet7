@@ -29,6 +29,19 @@
     <input type="submit" value="Inscription"/>
 </form>
 
+<br/>
+<h1>Connexion</h1>
+
+<form th:action="@{/authenticate}" th:object="${request}" method="post">
+    Pseudo :
+    <input type="text" th:field="*{username}"/>
+    <br/>
+    Mot de Passe:
+    <input type="text" th:field="*{password}"/>
+    <br/>
+    <input type="submit" value="Connexion"/>
+</form>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>

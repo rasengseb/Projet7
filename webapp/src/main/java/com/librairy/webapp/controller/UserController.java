@@ -1,5 +1,6 @@
 package com.librairy.webapp.controller;
 
+import com.librairy.webapp.model.JwtRequest;
 import com.librairy.webapp.model.User;
 import com.librairy.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ public class UserController {
     @GetMapping("/user")
     public String inscrpition(Model model){
         User user = new User();
+        JwtRequest request= new JwtRequest();
         model.addAttribute("user", user);
+        model.addAttribute("request", request);
         return "SignIn";
     }
 
