@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <title>Librairy</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-<!--    <link rel="stylesheet" type="text/css" th:href="@{}"/>-->
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{}"/>-->
 </head>
 <body>
 <div th:insert="header :: header"></div>
 
-<h1>List Livres</h1>
+<div class="container">
+    <h1>List Livres</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th style="border: black">Titre</th>
-        <th style="border: black">Autheur</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${books.empty}">
-        <td colspan="3">Aucun livre enregistré</td>
-    </tr>
-    <tr th:each="book: ${books}">
-        <td style="border: black"><span th:text="${book.getTitle()}">Titre</span></td>
-        <td style="border: black"><span th:text="${book.getAuthor()}">Autheur</span></td>
-        <td><a th:href="@{/book/${book.getId()}}">Voir</a></td>
-    </tr>
-    </tbody>
-</table>
+    <table class="table-bordered table">
+        <thead>
+        <tr>
+            <th style="border: black">Titre</th>
+            <th style="border: black">Autheur</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${books.empty}">
+            <td colspan="3">Aucun livre enregistré</td>
+        </tr>
+        <tr th:each="book: ${books}">
+            <td style="border: black"><span th:text="${book.getTitle()}">Titre</span></td>
+            <td style="border: black"><span th:text="${book.getAuthor()}">Autheur</span></td>
+            <td><a th:href="@{/book/${book.getId()}}">Voir</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

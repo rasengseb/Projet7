@@ -8,28 +8,29 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<h1>List Lending</h1>
+<div class="container">
+    <h1>List Lending</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>Utilisateur</th>
-        <th>Début</th>
-        <th>Fin</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${lendings.empty}">
-        <td colspan="3">Aucun prêt enregistré</td>
-    </tr>
-    <tr th:each="lendings: ${lending}">
-        <td><span th:text="${lending.getUtilisateur().getPseudo()}">Utilisateur :</span></td>
-        <td><span th:text="${lending.getStart()}">Début :</span></td>
-        <td><span th:text="${lending.getEnd()}">Fin :</span></td>
-    </tr>
-    </tbody>
-</table>
-
+    <table class="table-bordered table">
+        <thead>
+        <tr>
+            <th>Utilisateur</th>
+            <th>Début</th>
+            <th>Fin</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${lendings.empty}">
+            <td colspan="3">Aucun prêt enregistré</td>
+        </tr>
+        <tr th:each="lendings: ${lending}">
+            <td><span th:text="${lending.getUtilisateur().getPseudo()}">Utilisateur :</span></td>
+            <td><span th:text="${lending.getStart()}">Début :</span></td>
+            <td><span th:text="${lending.getEnd()}">Fin :</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>

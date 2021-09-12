@@ -8,26 +8,29 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<h1>List Librairy</h1>
+<div class="container">
+    <h1>List Librairy</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>Nom</th>
-        <th>Adresse</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${librairies.empty}">
-        <td colspan="3">Aucune librairie d'enregistrée</td>
-    </tr>
-    <tr th:each="librairy: ${librairies}">
-        <td><span th:text="${librairy.getName()}">Nom</span></td>
-        <td><span th:text="${librairy.getAdresse()}">Adresse</span> </td>
-        <td><a th:href="">Consulter</a> </td>
-    </tr>
-    </tbody>
-</table>
+    <table class="table-bordered table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${librairies.empty}">
+            <td colspan="3">Aucune librairie d'enregistrée</td>
+        </tr>
+        <tr th:each="librairy: ${librairies}">
+            <td><span th:text="${librairy.getName()}">Nom</span></td>
+            <td><span th:text="${librairy.getAdresse()}">Adresse</span></td>
+            <td><a th:href="">Consulter</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -8,39 +8,84 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<h1>Inscription</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
 
-<form th:action="@{/user}" th:object="${user}" method="POST">
-    Pseudo:
-    <input type="text" th:field="*{pseudo}"/>
-    <br/>
-    Mot de Passe:
-    <input type="text" th:field="*{mdp}"/>
-    <br/>
-    Prénom:
-    <input type="text" th:field="*{firstName}"/>
-    <br/>
-    Nom:
-    <input type="text" th:field="*{lastName}"/>
-    <br/>
-    Mail:
-    <input type="text" th:field="*{mail}"/>
-    <br/>
-    <input type="submit" value="Inscription"/>
-</form>
+            <div class="card">
+                <h1 class="card-header">Inscripton</h1>
+                <div class="card-body">
+                    <form th:action="@{/user}" th:object="${user}" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="mail">Email</label>
+                                <input type="text" class="form-control" id="mail" placeholder="Email"
+                                       th:field="*{mail}">
+                            </div>
 
-<br/>
-<h1>Connexion</h1>
+                            <div class="form-group col-md-6">
+                                <label for="mdp">Mot de Passe</label>
+                                <input type="password" class="form-control" id="mdp" placeholder="Passeword"
+                                       th:field="*{mdp}">
+                            </div>
+                        </div>
 
-<form th:action="@{/authenticate}" th:object="${request}" method="post">
-    Pseudo :
-    <input type="text" th:field="*{username}"/>
-    <br/>
-    Mot de Passe:
-    <input type="text" th:field="*{password}"/>
-    <br/>
-    <input type="submit" value="Connexion"/>
-</form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" class="form-control" id="prenom" placeholder="Prénom"
+                                       th:field="*{firstName}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="nom">Nom</label>
+                                <input type="text" class="form-control" id="nom" placeholder="Nom"
+                                       th:field="*{lastName}">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="pseudo">Pseudo</label>
+                                <input type="text" class="form-control" id="pseudo" placeholder="Pseudo"
+                                       th:field="*{pseudo}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <button type="submit" class="btn btn-dark">Inscription</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <h1 class="card-header">Connexion</h1>
+                <div class="card-body">
+                    <form th:action="@{/authenticate}" th:object="${request}" method="post">
+                        <div class="form-group">
+                            <label for="pseudoCo">Pseudo</label>
+                            <input type="text" class="form-control" id="pseudoCo" placeholder="Pseudo"
+                                   th:field="*{username}">
+                        </div>
+                        <div class="form-group">
+                            <label for="mdpCo">Mot de Passe</label>
+                            <input type="text" class="form-control" id="mdpCo" placeholder="Password"
+                                   th:field="*{password}">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-dark">Connexion</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
