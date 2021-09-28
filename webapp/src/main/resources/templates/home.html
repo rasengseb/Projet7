@@ -9,15 +9,15 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<div class="container">
-    <h1>HOME</h1>
-    <a th:href="@{/book}">List Livres</a>
-    <a th:href="@{/librairy}">List Librairy</a>
-    <a th:href="@{/lending}">List Prêt</a>
-    <a th:href="@{/user}">Inscription</a>
-
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Bienvenue</h1>
+        <p class="lead">Vous pourrez ici retrouver la liste des ouvrages présents dans les différentes bibliothèques de
+            notre belle ville de Lyon.</p>
+        <hr class="my-4">
+        <p>Pour consulter vos emprunts ou les prolonger, merci de vous connectez.</p>
+    </div>
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

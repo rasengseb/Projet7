@@ -12,7 +12,7 @@ public class AuthenticationService {
     @Autowired
     private AuthenticationProxy authenticationProxy;
 
-    public JwtResponse authenticate(JwtRequest authenticationRequest){
+    public String authenticate(JwtRequest authenticationRequest){
         return authenticationProxy.createAuthenticationToken(authenticationRequest);
     }
 }

@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface AuthenticationProxy {
 
     @PostMapping("/authenticate")
-    JwtResponse createAuthenticationToken(@RequestBody JwtRequest authenticationRequest);
+    String createAuthenticationToken(@RequestBody JwtRequest authenticationRequest);
 }
