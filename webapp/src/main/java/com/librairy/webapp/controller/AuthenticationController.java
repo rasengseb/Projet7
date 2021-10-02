@@ -1,5 +1,8 @@
 package com.librairy.webapp.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import com.librairy.webapp.model.JwtRequest;
 import com.librairy.webapp.model.JwtResponse;
@@ -22,9 +25,10 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping("/authenticate")
-    private String connexion(@ModelAttribute JwtRequest authenticationRequest, HttpSession session){
-        JwtResponse response = new JwtResponse(authenticationService.authenticate(authenticationRequest));
+    private String connexion(@ModelAttribute JwtRequest authenticationRequest, HttpSession session) throws JsonProcessingException {
+        JwtResponse response = new JwtResponse("bearer " + authenticationService.authenticate(authenticationRequest));
 
         String [] chunks = response.getJwttoken().split("\\.");
         Base64.Decoder decoder = Base64.getDecoder();
@@ -35,7 +39,14 @@ public class AuthenticationController {
         System.out.println(header);
         System.out.println(payload);
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode rootNode = objectMapper.readTree(payload);
+        JsonNode idNode = rootNode.path("id");
+        System.out.println("id = " + idNode.asInt());
+
+
+        session.setAttribute("id", idNode.asInt());
         session.setAttribute("token", response.getJwttoken());
-        return "redirect:/";
+        return "profile";
     }
 }
