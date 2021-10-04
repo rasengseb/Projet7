@@ -5,6 +5,8 @@ import com.librairy.webapp.proxy.UserProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -14,5 +16,9 @@ public class UserService {
     public User createUser(User user){
         User savedUser = userProxy.createUser(user);
         return savedUser;
+    }
+
+    public Optional<User> getUser(String token, int id){
+        return userProxy.getUser(token, id);
     }
 }

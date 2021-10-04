@@ -10,6 +10,7 @@ import com.librairy.webapp.service.AuthenticationService;
 import com.librairy.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,7 +28,7 @@ public class AuthenticationController {
 
 
     @PostMapping("/authenticate")
-    private String connexion(@ModelAttribute JwtRequest authenticationRequest, HttpSession session) throws JsonProcessingException {
+    private String connexion(@ModelAttribute JwtRequest authenticationRequest, HttpSession session, Model model) throws JsonProcessingException {
         JwtResponse response = new JwtResponse("bearer " + authenticationService.authenticate(authenticationRequest));
 
         String [] chunks = response.getJwttoken().split("\\.");
@@ -47,6 +48,8 @@ public class AuthenticationController {
 
         session.setAttribute("id", idNode.asInt());
         session.setAttribute("token", response.getJwttoken());
+
+        model.addAttribute("user", userService.getUser(response.getJwttoken(), idNode.asInt()));
         return "profile";
     }
 }
