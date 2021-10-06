@@ -1,11 +1,11 @@
 package com.librairy.api.controller;
 
-import com.librairy.api.model.Book;
 import com.librairy.api.model.Lending;
 import com.librairy.api.service.LendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -59,4 +59,9 @@ public class LendingController {
     public void deleteLending(@PathVariable("id") int id){
         lendingService.deleteLending(id);
     }
+
+    List<Lending> findLendingByUser(int id){
+        return lendingService.findLendingByUser(id);
+    }
+
 }

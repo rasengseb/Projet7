@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ser.Serializers;
 import com.librairy.webapp.model.JwtRequest;
 import com.librairy.webapp.model.JwtResponse;
 import com.librairy.webapp.service.AuthenticationService;
+import com.librairy.webapp.service.LendingService;
 import com.librairy.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LendingService lendingService;
 
 
     @PostMapping("/authenticate")
@@ -50,6 +54,7 @@ public class AuthenticationController {
         session.setAttribute("token", response.getJwttoken());
 
         model.addAttribute("user", userService.getUser(response.getJwttoken(), idNode.asInt()));
+        model.addAttribute("lendings", lendingService.findLendingByUser(response.getJwttoken(), idNode.asInt()));
         return "profile";
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -30,5 +31,9 @@ public class LendingService {
     public Lending saveLending(Lending lending){
         Lending savedLending = lendingRepository.save(lending);
         return savedLending;
+    }
+
+    public List<Lending> findLendingByUser(int id){
+        return lendingRepository.findByUser(id);
     }
 }
