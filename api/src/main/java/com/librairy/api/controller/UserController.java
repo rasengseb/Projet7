@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/user")
     public User createUser(@RequestBody User user){
-        if(userService.doublonCheck(user)){
+        if(!userService.doublonCheck(user)){
             return null;
         } else {
             return userService.saveUser(user);
