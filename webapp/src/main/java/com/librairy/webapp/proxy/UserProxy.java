@@ -1,5 +1,6 @@
 package com.librairy.webapp.proxy;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.librairy.webapp.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import java.util.Optional;
 public interface UserProxy {
 
     @GetMapping("/user")
-    Optional<User> getUser(@RequestHeader(value = "Authorization", required = true) String authorizationHeader,int id);
+    User getUser(@RequestHeader(value = "Authorization", required = true) String authorizationHeader, JsonNode id);
 
     @PostMapping("/user")
     User createUser(User user);

@@ -1,5 +1,6 @@
 package com.librairy.webapp.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.librairy.webapp.model.User;
 import com.librairy.webapp.proxy.UserProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class UserService {
         return savedUser;
     }
 
-    public Optional<User> getUser(String token, int id){
+    public User getUser(String token, JsonNode id){
         return userProxy.getUser(token, id);
     }
 }

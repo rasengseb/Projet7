@@ -38,22 +38,20 @@ public class AuthenticationController {
         String [] chunks = response.getJwttoken().split("\\.");
         Base64.Decoder decoder = Base64.getDecoder();
 
-        String header = new String(decoder.decode(chunks[0]));
+       // String header = new String(decoder.decode(chunks[0]));
         String payload = new String(decoder.decode(chunks[1]));
-        System.out.println(response.getJwttoken());
-        System.out.println(header);
-        System.out.println(payload);
+
+        response.setJwttoken("bearer" + response.getJwttoken());
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(payload);
         JsonNode idNode = rootNode.path("id");
         System.out.println("id = " + idNode.asInt());
 
-
         session.setAttribute("id", idNode.asInt());
         session.setAttribute("token", response.getJwttoken());
 
-        model.addAttribute("user", userService.getUser(response.getJwttoken(), idNode.asInt()));
+        model.addAttribute("user", userService.getUser(response.getJwttoken(), idNode));
         model.addAttribute("lendings", lendingService.findLendingByUser(response.getJwttoken(), idNode.asInt()));
         return "profile";
     }
