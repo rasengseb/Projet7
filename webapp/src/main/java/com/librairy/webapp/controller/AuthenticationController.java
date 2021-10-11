@@ -33,7 +33,7 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     private String connexion(@ModelAttribute JwtRequest authenticationRequest, HttpSession session, Model model) throws JsonProcessingException {
-        JwtResponse response = new JwtResponse("bearer " + authenticationService.authenticate(authenticationRequest));
+        JwtResponse response = new JwtResponse(authenticationService.authenticate(authenticationRequest));
 
         String [] chunks = response.getJwttoken().split("\\.");
         Base64.Decoder decoder = Base64.getDecoder();
