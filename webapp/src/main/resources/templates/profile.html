@@ -30,14 +30,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:if="${lendings.empty}">
+                <tr th:if="${lendings == null}">
                     <td colspan="3">Aucun prêt enregistré</td>
                 </tr>
                 <tr th:each="lendings: ${lending}">
                     <td><span th:text="${lending.getCopy().getBook().getTitle()}">Titre</span></td>
                     <td><span th:text="${lending.getStart()}">Début :</span></td>
                     <td><span th:text="${lending.getEnd()}">Fin :</span></td>
-                    <tr th:if="!${lending.extend}">
+                    <tr th:if="!${lending.isExtended()}">
                     <form th:action="@{/lending/{id}" th:object="${lendings}" method="post">
                         <td><button type="submit" class="btn btn-dark">Prolonger</td>
                     </form>

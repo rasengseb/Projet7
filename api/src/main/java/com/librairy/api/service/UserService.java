@@ -21,8 +21,8 @@ public class UserService {
         return userRepository.findByPseudo(pseudo);
     }
 
-    public Optional<User> getUser(int id){
-        return userRepository.findById(id);
+    public User getUser(int id){
+        return userRepository.findById(id).orElse(null);
     }
 
     public Iterable<User> getUsers(){

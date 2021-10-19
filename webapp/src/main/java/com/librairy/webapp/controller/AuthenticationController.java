@@ -51,7 +51,7 @@ public class AuthenticationController {
         session.setAttribute("id", idNode.asInt());
         session.setAttribute("token", response.getJwttoken());
 
-        model.addAttribute("user", userService.getUser(response.getJwttoken(), idNode));
+        model.addAttribute("user", userService.getUser(response.getJwttoken(), idNode.asInt()));
         model.addAttribute("lendings", lendingService.findLendingByUser(response.getJwttoken(), idNode.asInt()));
         return "profile";
     }

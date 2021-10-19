@@ -19,7 +19,7 @@ public class UserService {
         return savedUser;
     }
 
-    public User getUser(String token, JsonNode id){
+    public User getUser(String token, int id){
         return userProxy.getUser(token, id);
     }
 }

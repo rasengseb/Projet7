@@ -3,6 +3,7 @@ package com.librairy.webapp.proxy;
 import com.librairy.webapp.model.Lending;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
@@ -17,8 +18,8 @@ public interface LendingProxy {
     @GetMapping("/lending")
     Iterable<Lending> getLendings();
 
-    @GetMapping("/lending")
-    List<Lending> findLendingByUser(@RequestHeader(value = "Authorization", required = true) String authorizationHeader, int id);
+    @GetMapping("/lending/{id}")
+    List<Lending> findLendingByUser(@RequestHeader(value = "Authorization", required = true) String authorizationHeader, @PathVariable("id") int id);
 
     @PostMapping("/lending")
     void saveLending(@RequestHeader(value = "Authorization", required = true) String authorizationHeader, Lending lending);

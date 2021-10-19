@@ -18,7 +18,7 @@ public class UserController {
     AuthenticationManager authenticationManager;
 
     @GetMapping("/user/{id}")
-    public Optional<User> getUser(@PathVariable("id") int id){
+    public User getUser(@PathVariable("id") int id){
         return userService.getUser(id);
     }
 
@@ -33,9 +33,9 @@ public class UserController {
 
     @PutMapping("/user/{id}")
     public User updateUser(@PathVariable("id") int id, @RequestBody User user){
-        Optional<User> u = userService.getUser(id);
-        if (u.isPresent()){
-            User currentUser = u.get();
+        User u = userService.getUser(id);
+        if (u != null){
+            User currentUser = u;
 
             String firstName = user.getFirstName();
             if (firstName != null){
