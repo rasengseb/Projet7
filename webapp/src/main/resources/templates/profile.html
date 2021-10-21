@@ -7,9 +7,10 @@
     <!--    <link rel="stylesheet" type="text/css" th:href="@{}"/>-->
 </head>
 <body>
+<div class="container">
+
 <div th:insert="header :: header"></div>
 
-<div class="container">
 
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -37,11 +38,9 @@
                     <td><span th:text="${lending.getCopy().getBook().getTitle()}">Titre</span></td>
                     <td><span th:text="${lending.getStart()}">Début :</span></td>
                     <td><span th:text="${lending.getEnd()}">Fin :</span></td>
-                    <tr th:if="!${lending.isExtended()}">
                     <form th:action="@{/lending/{id}" th:object="${lendings}" method="post">
                         <td><button type="submit" class="btn btn-dark">Prolonger</td>
                     </form>
-                    </tr>
                 </tr>
                 </tbody>
             </table>
