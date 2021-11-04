@@ -5,6 +5,7 @@ import com.librairy.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -56,5 +57,10 @@ public class BookController {
     @DeleteMapping("/book/{id}")
     public void deleteBook(@PathVariable("id") int id){
         bookService.deleteBook(id);
+    }
+
+    @GetMapping("/book/books")
+    public List<Book> findByAuthorOrTitle(@RequestBody Book book){
+        return bookService.findByAuthorOrTitle(book.getAuthor(), book.getTitle());
     }
 }

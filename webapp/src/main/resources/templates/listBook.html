@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Librairy</title>
@@ -10,7 +10,20 @@
 <div th:insert="header :: header"></div>
 
 <div class="container">
-    <h1>List Livres</h1>
+
+    <form th:action="@{/book/books}" th:object="${book}" method="get">
+        <div class="row">
+            <div class="col-auto">
+                <input type="text" class="form-control" placeholder="Titre" th:field="*{title}">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" placeholder="Autheur" th:field="*{author}">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-dark"> Rechercher </button>
+            </div>
+        </div>
+    </form>
 
     <table class="table-bordered table">
         <thead>

@@ -5,6 +5,7 @@ import com.librairy.webapp.proxy.BookProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,5 +20,9 @@ public class BookService {
 
     public Iterable<Book> getBooks(){
         return bookProxy.getBooks();
+    }
+
+    public List<Book> findByAuthorAndTitle(String author, String title){
+        return bookProxy.findByAuthorAndTitle(author, title);
     }
 }

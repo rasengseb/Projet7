@@ -2,10 +2,10 @@ package com.librairy.api.service;
 
 import com.librairy.api.model.Book;
 import com.librairy.api.repository.BookRepository;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -30,5 +30,9 @@ public class BookService {
     public Book saveBook(Book book){
         Book savedBook = bookRepository.save(book);
         return savedBook;
+    }
+
+    public List<Book> findByAuthorOrTitle(String author, String title){
+        return bookRepository.findByAuthorOrTitle(author, title);
     }
 }
