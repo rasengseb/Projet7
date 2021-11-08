@@ -38,7 +38,7 @@ public class BookController {
 
     @GetMapping("/book/books")
     public String searchBook(@RequestBody Book book, Model model){
-        List<Book> books = bookService.findByAuthorAndTitle(book.getAuthor(), book.getTitle());
+        List<Book> books = bookService.findByAuthorOrTitle(book.getAuthor(), book.getTitle());
         model.addAttribute("books", books);
         model.addAttribute("book", book);
 

@@ -22,7 +22,7 @@ public class BookService {
         return bookProxy.getBooks();
     }
 
-    public List<Book> findByAuthorAndTitle(String author, String title){
-        return bookProxy.findByAuthorAndTitle(author, title);
+    public List<Book> findByAuthorOrTitle(String author, String title){
+        return bookProxy.findByAuthorOrTitle(author, title);
     }
 }
