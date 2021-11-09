@@ -21,7 +21,7 @@ public class LendingService {
         return lendingRepository.findById(id);
     }
 
-    public Iterable<Lending> getLendings(){
+    public List<Lending> getLendings(){
         return lendingRepository.findAll();
     }
 
@@ -40,7 +40,7 @@ public class LendingService {
 
     public List<Lending> getOutdatedLending(){
         List<Lending> outdated = new ArrayList<>();
-        Iterable<Lending> lendings = getLendings();
+        List<Lending> lendings = getLendings();
         
         return outdated;
     }
