@@ -16,6 +16,6 @@ public interface LendingRepository extends JpaRepository<Lending, Integer> {
     @GetMapping("/lending/{id}")
     List<Lending> findByUser(@PathVariable("id") int id);
 
-    @PostMapping("mail")
-    List<Lending> getOutdatedLending();
+//    @PostMapping("mail")
+//    List<Lending> getOutdatedLending();
 }

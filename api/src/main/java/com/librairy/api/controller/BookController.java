@@ -43,8 +43,6 @@ public class BookController {
             if (author != null){
                 currentBook.setAuthor(author);
             }
-            currentBook.setTotalExemplaire(book.getTotalExemplaire());
-            currentBook.setExemplaireDispo(book.getExemplaireDispo());
 
             bookService.saveBook(currentBook);
             return currentBook;

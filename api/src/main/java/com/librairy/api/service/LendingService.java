@@ -2,11 +2,9 @@ package com.librairy.api.service;
 
 import com.librairy.api.model.Lending;
 import com.librairy.api.repository.LendingRepository;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,10 +36,10 @@ public class LendingService {
         return lendingRepository.findByUser(id);
     }
 
-    public List<Lending> getOutdatedLending(){
-        List<Lending> outdated = new ArrayList<>();
-        List<Lending> lendings = getLendings();
-        
-        return outdated;
-    }
+//    public List<Lending> getOutdatedLending(){
+//        List<Lending> outdated = new ArrayList<>();
+//        List<Lending> lendings = getLendings();
+//
+//        return outdated;
+//    }
 }

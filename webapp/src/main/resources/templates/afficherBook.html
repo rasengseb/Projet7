@@ -9,9 +9,34 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<p th:text="${book.getTitle()}"></p> <br/>
-<p th:text="${book.getAuthor()}"></p> <br/>
-<p th:text="${book.getLibrairy()}"></p> <br/>
-<p th:text="${book.getExemplaireDispo()}"></p> <br/>
+<div class="container">
+    <div class="card">
+        <div class="card-header">"${book.getTitle()}"</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="author">Autheur</label>
+                <input type="text" class="form-control" id="author" th:value="${book.author}" readonly>
+            </div>
+
+            <div class="form-row">
+                <table class="table-bordered table">
+                    <thead>
+                    <tr>
+                        <th>Bibliothèque</th>
+                        <th>Nombre disponible</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="copy: ${copies}">
+                        <td><span th:text="${copy.getLibrairy().getName()}">Bibliothèque</span></td>
+                        <td><span th:text="${copy.getNbExemplaireDispo()}">Nombre disponible</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -18,7 +18,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private HttpSession session;
 
     @GetMapping("/user")
     public String inscrpition(Model model){

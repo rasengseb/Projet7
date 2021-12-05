@@ -1,11 +1,13 @@
 package com.librairy.api.controller;
 
+import com.librairy.api.model.Book;
 import com.librairy.api.model.Copy;
 import com.librairy.api.service.CopyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +29,11 @@ public class CopyController {
     @DeleteMapping("/copy/{id}")
     public void deleteCopy(@PathVariable("id") int id){
         copyService.deleteCopy(id);
+    }
+
+    @GetMapping("/copy")
+    public List<Copy> GetCopyByBook(@RequestBody Book book){
+        return copyService.getCopyByBook(book);
     }
 
 }

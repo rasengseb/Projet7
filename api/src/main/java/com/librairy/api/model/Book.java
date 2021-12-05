@@ -20,16 +20,6 @@ public class Book {
     @Column(name = "author")
     private String author;
 
-    @Column(name = "total")
-    private int totalExemplaire;
-
-    @Column(name = "dispo")
-    private int exemplaireDispo;
-
-    @OneToOne
-    @JoinColumn(name = "idLibrairy")
-    private Librairy librairy;
-
     public Book(){
 
     }

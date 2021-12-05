@@ -21,4 +21,7 @@ public class Copy {
     @OneToOne
     @JoinColumn(name = "idLibrairy")
     private Librairy library;
+
+    @Column(name = "nbExemplaireDispo")
+    private int nbExemplaireDispo;
 }

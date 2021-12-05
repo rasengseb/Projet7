@@ -11,9 +11,4 @@ public class Book {
 
     private String author;
 
-    private int totalExemplaire;
-
-    private int exemplaireDispo;
-
-    private Librairy librairy;
 }

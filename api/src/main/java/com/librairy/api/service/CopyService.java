@@ -1,11 +1,13 @@
 package com.librairy.api.service;
 
+import com.librairy.api.model.Book;
 import com.librairy.api.model.Copy;
 import com.librairy.api.repository.CopyRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -30,5 +32,9 @@ public class CopyService {
     public Copy saveCopy(Copy copy){
         Copy savedCopy = copyRepository.save(copy);
         return savedCopy;
+    }
+
+    public List<Copy> getCopyByBook(Book book){
+        return copyRepository.getAllByBook(book);
     }
 }

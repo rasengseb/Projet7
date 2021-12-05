@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Optional;
 
 @FeignClient(name="Book", url = "localhost:9000")
 public interface BookProxy {
 
     @GetMapping("/book/{id}")
-    Optional<Book> getBook(@PathVariable("id") int id);
+    Book getBook(@PathVariable("id") int id);
 
     @GetMapping("/book")
     Iterable<Book> getBooks();
