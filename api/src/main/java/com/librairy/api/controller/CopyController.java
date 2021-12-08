@@ -16,10 +16,10 @@ public class CopyController {
     @Autowired
     private CopyService copyService;
 
-    @GetMapping("/copy/{id}")
-    public Optional<Copy> getCopy(@PathVariable("id") int id) {
-        return copyService.getCopy(id);
-    }
+//    @GetMapping("/copy/{id}")
+//    public Optional<Copy> getCopy(@PathVariable("id") int id) {
+//        return copyService.getCopy(id);
+//    }
 
     @PostMapping("/copy")
     public Copy createCopy(@RequestBody Copy copy) {
@@ -31,9 +31,9 @@ public class CopyController {
         copyService.deleteCopy(id);
     }
 
-    @GetMapping("/copy")
-    public List<Copy> GetCopyByBook(@RequestBody Book book){
-        return copyService.getCopyByBook(book);
+    @GetMapping("/copy/{id}")
+    public List<Copy> GetCopyByBook(@PathVariable int id){
+        return copyService.getCopyByBook(id);
     }
 
 }

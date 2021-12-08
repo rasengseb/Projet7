@@ -18,7 +18,7 @@ public class Copy {
     @JoinColumn(name = "idBook")
     private Book book;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idLibrairy")
     private Librairy library;
 

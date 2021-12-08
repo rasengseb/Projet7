@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CopyService {
@@ -15,7 +14,7 @@ public class CopyService {
     @Autowired
     private CopyProxy copyProxy;
 
-    public List<Copy> getCopyByBook(String token, Book book){
-        return copyProxy.getCopyByBook(token, book);
+    public List<Copy> getCopyByBook(int id){
+        return copyProxy.getCopyByBook(id);
     }
 }

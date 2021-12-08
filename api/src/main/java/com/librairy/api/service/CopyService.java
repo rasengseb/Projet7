@@ -34,7 +34,7 @@ public class CopyService {
         return savedCopy;
     }
 
-    public List<Copy> getCopyByBook(Book book){
-        return copyRepository.getAllByBook(book);
+    public List<Copy> getCopyByBook(int id){
+        return copyRepository.getAllByBookId(id);
     }
 }

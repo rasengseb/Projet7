@@ -35,9 +35,9 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public String getBook(HttpSession session,@PathVariable("id") int id, Model model){
+    public String getBook(@PathVariable("id") int id, Model model){
         Book book = bookService.getBook(id);
-        List<Copy> copy = copyService.getCopyByBook(session.getAttribute("token").toString(), book);
+        List<Copy> copy = copyService.getCopyByBook(id);
         model.addAttribute("book", book);
         model.addAttribute("copies", copy);
 
