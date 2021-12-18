@@ -20,7 +20,7 @@ public class Copy {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idLibrairy")
-    private Librairy library;
+    private Librairy librairy;
 
     @Column(name = "nbExemplaireDispo")
     private int nbExemplaireDispo;
