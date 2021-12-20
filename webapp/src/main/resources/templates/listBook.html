@@ -40,7 +40,7 @@
         <tr th:each="book: ${books}">
             <td style="border: black"><span th:text="${book.getTitle()}">Titre</span></td>
             <td style="border: black"><span th:text="${book.getAuthor()}">Autheur</span></td>
-            <td><a th:href="@{/book/${book.getId()}}">Voir</a></td>
+            <td><a th:href="@{/book/(${book.getId()})}">Voir</a></td>
         </tr>
         </tbody>
     </table>
