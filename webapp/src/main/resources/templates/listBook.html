@@ -9,9 +9,11 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<div class="container">
+<div class="container" style="margin-top: 100px">
 
-    <form th:action="@{/book/books}" th:object="${book}" method="get">
+    <h1 class="display-4">Recherche</h1>
+
+    <form th:action="@{/book/books}" th:object="${book}" method="post">
         <div class="row">
             <div class="col-auto">
                 <input type="text" class="form-control" placeholder="Titre" th:field="*{title}">
@@ -38,9 +40,9 @@
             <td colspan="3">Aucun livre enregistré</td>
         </tr>
         <tr th:each="book: ${books}">
-            <td style="border: black"><span th:text="${book.getTitle()}">Titre</span></td>
-            <td style="border: black"><span th:text="${book.getAuthor()}">Autheur</span></td>
-            <td><a th:href="@{/book/(${book.getId()})}">Voir</a></td>
+            <td><span th:text="${book.getTitle()}">Titre</span></td>
+            <td><span th:text="${book.getAuthor()}">Autheur</span></td>
+            <td><a th:href="@{/book/(id=${book.getId()})}">Voir</a></td>
         </tr>
         </tbody>
     </table>

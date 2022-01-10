@@ -14,7 +14,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/book/?id={id}")
     public Optional<Book> getBook(@PathVariable("id") int id){
         return bookService.getBook(id);
     }
@@ -57,7 +57,7 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
-    @GetMapping("/book/books")
+    @PostMapping("/book/books")
     public List<Book> findByAuthorOrTitle(@RequestBody Book book){
         return bookService.findByAuthorOrTitle(book.getAuthor(), book.getTitle());
     }

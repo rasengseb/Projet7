@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
@@ -34,7 +35,7 @@ public class BookController {
         return "listBook";
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/book/?id={id}")
     public String getBook(@PathVariable("id") int id, Model model){
         Book book = bookService.getBook(id);
         List<Copy> copy = copyService.getCopyByBook(id);
@@ -44,7 +45,7 @@ public class BookController {
         return "afficherBook";
     }
 
-    @GetMapping("/book/books")
+    @PostMapping("/book/books")
     public String searchBook(@RequestBody Book book, Model model){
         List<Book> books = bookService.findByAuthorOrTitle(book.getAuthor(), book.getTitle());
         model.addAttribute("books", books);
