@@ -35,7 +35,7 @@ public class BookController {
         return "listBook";
     }
 
-    @GetMapping("/book/?id={id}")
+    @GetMapping("/book/{id}")
     public String getBook(@PathVariable("id") int id, Model model){
         Book book = bookService.getBook(id);
         List<Copy> copy = copyService.getCopyByBook(id);

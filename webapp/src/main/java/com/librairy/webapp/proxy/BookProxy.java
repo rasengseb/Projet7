@@ -11,7 +11,7 @@ import java.util.List;
 @FeignClient(name="Book", url = "localhost:9000")
 public interface BookProxy {
 
-    @GetMapping("/book/?id={id}")
+    @GetMapping("/book/{id}")
     Book getBook(@PathVariable("id") int id);
 
     @GetMapping("/book")

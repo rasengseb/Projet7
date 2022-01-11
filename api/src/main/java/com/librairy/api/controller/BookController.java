@@ -14,7 +14,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/book/?id={id}")
+    @GetMapping("/book/{id}")
     public Optional<Book> getBook(@PathVariable("id") int id){
         return bookService.getBook(id);
     }
