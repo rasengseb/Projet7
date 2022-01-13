@@ -7,10 +7,7 @@ import com.librairy.webapp.service.CopyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -46,11 +43,12 @@ public class BookController {
     }
 
     @PostMapping("/book/books")
-    public String searchBook(@RequestBody Book book, Model model){
-        List<Book> books = bookService.findByAuthorOrTitle(book.getAuthor(), book.getTitle());
+    public String searchBook(@RequestParam String author, @RequestParam String title, Model model){
+        List<Book> books = bookService.findByAuthorOrTitle(author, title);
         model.addAttribute("books", books);
-        model.addAttribute("book", book);
 
+        Book book = new Book();
+        model.addAttribute("book", book);
         return "listBook";
     }
 }

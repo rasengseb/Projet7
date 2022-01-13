@@ -4,6 +4,7 @@ import com.librairy.webapp.model.Book;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public interface BookProxy {
     @GetMapping("/book")
     Iterable<Book> getBooks();
 
-    @GetMapping("/book/books")
+    @PostMapping("/book/books")
     List<Book> findByAuthorOrTitle(@RequestParam String author,@RequestParam String title);
 }

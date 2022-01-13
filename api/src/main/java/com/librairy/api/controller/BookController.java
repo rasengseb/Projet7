@@ -58,7 +58,7 @@ public class BookController {
     }
 
     @PostMapping("/book/books")
-    public List<Book> findByAuthorOrTitle(@RequestBody Book book){
-        return bookService.findByAuthorOrTitle(book.getAuthor(), book.getTitle());
+    public List<Book> findByAuthorOrTitle(@RequestParam String author, @RequestParam String title){
+        return bookService.findByAuthorOrTitle(author, title);
     }
 }
