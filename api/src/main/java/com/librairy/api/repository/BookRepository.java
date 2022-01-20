@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    List<Book> findByAuthorOrTitle(@RequestParam String author,@RequestParam String title);
+    List<Book> findByAuthorLikeOrTitleLike(@RequestParam String author,@RequestParam String title);
 }

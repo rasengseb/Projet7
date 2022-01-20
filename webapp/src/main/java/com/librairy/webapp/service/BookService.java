@@ -22,6 +22,6 @@ public class BookService {
     }
 
     public List<Book> findByAuthorOrTitle(String author, String title){
-        return bookProxy.findByAuthorOrTitle(author, title);
+        return bookProxy.findByAuthorLikeOrTitleLike("%" + author + "%","%" + title + "%");
     }
 }

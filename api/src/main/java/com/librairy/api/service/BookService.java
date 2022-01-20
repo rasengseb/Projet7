@@ -32,7 +32,7 @@ public class BookService {
         return savedBook;
     }
 
-    public List<Book> findByAuthorOrTitle(String author, String title){
-        return bookRepository.findByAuthorOrTitle(author, title);
+    public List<Book> findByAuthorLikeOrTitleLike(String author, String title){
+        return bookRepository.findByAuthorLikeOrTitleLike(author, title);
     }
 }

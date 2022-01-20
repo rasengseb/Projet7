@@ -19,5 +19,5 @@ public interface BookProxy {
     Iterable<Book> getBooks();
 
     @PostMapping("/book/books")
-    List<Book> findByAuthorOrTitle(@RequestParam String author,@RequestParam String title);
+    List<Book> findByAuthorLikeOrTitleLike(@RequestParam String author,@RequestParam String title);
 }

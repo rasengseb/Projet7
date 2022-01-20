@@ -59,6 +59,6 @@ public class BookController {
 
     @PostMapping("/book/books")
     public List<Book> findByAuthorOrTitle(@RequestParam String author, @RequestParam String title){
-        return bookService.findByAuthorOrTitle(author, title);
+        return bookService.findByAuthorLikeOrTitleLike(author, title);
     }
 }
