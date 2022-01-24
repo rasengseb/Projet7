@@ -33,6 +33,12 @@ public class BookService {
     }
 
     public List<Book> findByAuthorLikeOrTitleLike(String author, String title){
-        return bookRepository.findByAuthorLikeOrTitleLike(author, title);
+        if(author.length()==0){
+            return bookRepository.findByAuthorLikeOrTitleLike( author, "%"+title+"%");
+        }
+        if (title.length()==0){
+            return bookRepository.findByAuthorLikeOrTitleLike( "%"+author+"%", title);
+        }
+        return bookRepository.findByAuthorLikeOrTitleLike( "%"+author+"%", "%"+title+"%");
     }
 }

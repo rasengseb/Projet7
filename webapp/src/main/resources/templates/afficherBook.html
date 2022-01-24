@@ -9,9 +9,9 @@
 <body>
 <div th:insert="header :: header"></div>
 
-<div class="container">
+<div class="container" style="margin-top: 100px">
     <div class="card">
-        <div class="card-header">"${book.getTitle()}"</div>
+        <input type="text" class="card-header" th:value="${book.getTitle()}" readonly/>
         <div class="card-body">
             <div class="form-group">
                 <label for="author">Autheur</label>
