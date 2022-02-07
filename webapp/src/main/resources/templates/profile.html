@@ -27,27 +27,25 @@
                     <th>Titre</th>
                     <th>Début</th>
                     <th>Fin</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:if="${lendings == null}">
                     <td colspan="3">Aucun prêt enregistré</td>
                 </tr>
-                <tr th:each="lendings: ${lending}">
+                <tr th:each="lending: ${lendings}">
                     <td><span th:text="${lending.getCopy().getBook().getTitle()}">Titre</span></td>
                     <td><span th:text="${lending.getStart()}">Début :</span></td>
                     <td><span th:text="${lending.getEnd()}">Fin :</span></td>
-                    <form th:action="@{/lending/{id}" th:object="${lendings}" method="post">
-                        <td><button type="submit" class="btn btn-dark">Prolonger</td>
+                    <form th:action="@{/lending/{id}}" th:object="${lendings}" method="post">
+                        <td>
+                            <button type="submit" class="btn btn-dark">Prolonger</button>
+                        </td>
                     </form>
                 </tr>
                 </tbody>
             </table>
-        </div>
-
-
-        <div class="tab-pane fade" id="nav-infos" role="tabpanel" aria-label="nav-infos-tab">
-
         </div>
     </div>
 </div>

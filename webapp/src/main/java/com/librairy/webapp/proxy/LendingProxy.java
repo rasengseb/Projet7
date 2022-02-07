@@ -18,7 +18,7 @@ public interface LendingProxy {
     @GetMapping("/lending")
     Iterable<Lending> getLendings();
 
-    @GetMapping("/lending/{id}")
+    @GetMapping("/lendings/{id}")
     List<Lending> findLendingByUser(@RequestHeader(value = "Authorization", required = true) String authorizationHeader, @PathVariable("id") int id);
 
     @PostMapping("/lending")

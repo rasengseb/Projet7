@@ -60,8 +60,9 @@ public class LendingController {
         lendingService.deleteLending(id);
     }
 
-    List<Lending> findLendingByUser(int id){
-        return lendingService.findLendingByUser(id);
+    @GetMapping("/lendings/{id}")
+    List<Lending> findLendingByUser(@PathVariable("id") int id){
+        return lendingService.findAllLendingByUser(id);
     }
 
 }

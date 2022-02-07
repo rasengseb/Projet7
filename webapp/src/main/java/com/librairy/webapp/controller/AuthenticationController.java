@@ -41,12 +41,11 @@ public class AuthenticationController {
        // String header = new String(decoder.decode(chunks[0]));
         String payload = new String(decoder.decode(chunks[1]));
 
-        response.setJwttoken("bearer" + response.getJwttoken());
+        response.setJwttoken("Bearer " + response.getJwttoken());
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(payload);
         JsonNode idNode = rootNode.path("id");
-        System.out.println("id = " + idNode.asInt());
 
         session.setAttribute("id", idNode.asInt());
         session.setAttribute("token", response.getJwttoken());

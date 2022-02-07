@@ -32,8 +32,8 @@ public class LendingService {
         return savedLending;
     }
 
-    public List<Lending> findLendingByUser(int id){
-        return lendingRepository.findByUser(id);
+    public List<Lending> findAllLendingByUser(int id){
+        return lendingRepository.findAllByUserId(id);
     }
 
 //    public List<Lending> getOutdatedLending(){
