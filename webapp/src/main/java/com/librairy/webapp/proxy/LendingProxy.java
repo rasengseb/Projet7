@@ -13,7 +13,7 @@ import java.util.List;
 public interface LendingProxy {
 
     @GetMapping("/lending/{id}")
-    Lending getLending(int id);
+    Lending getLending(@PathVariable("id") int id);
 
     @GetMapping("/lending")
     Iterable<Lending> getLendings();

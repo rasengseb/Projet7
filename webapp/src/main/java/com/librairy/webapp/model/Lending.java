@@ -2,14 +2,16 @@ package com.librairy.webapp.model;
 
 import lombok.Data;
 
+import java.util.Calendar;
+
 @Data
 public class Lending {
 
     private int id;
 
-    private String start;
+    private Calendar start;
 
-    private String end;
+    private Calendar end;
 
     private boolean extended;
 

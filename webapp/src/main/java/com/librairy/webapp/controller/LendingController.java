@@ -34,7 +34,7 @@ public class LendingController {
     public String extendLending(HttpSession session, Model model, @PathVariable("id") int id){
         lendingService.extend(session.getAttribute("token").toString(), id);
 
-        //model.addAttribute("user", userService.getUser(session.getAttribute("token").toString(), Integer.parseInt(session.getAttribute("id").toString())));
+        model.addAttribute("user", userService.getUser(session.getAttribute("token").toString(), Integer.parseInt(session.getAttribute("id").toString())));
         model.addAttribute("lendings", lendingService.findLendingByUser(session.getAttribute("token").toString(), Integer.parseInt(session.getAttribute("id").toString())));
         return "profile";
     }

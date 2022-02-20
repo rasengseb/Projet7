@@ -15,7 +15,7 @@ public class LendingController {
     private LendingService lendingService;
 
     @GetMapping("/lending/{id}")
-    public Optional<Lending> getLending(@PathVariable("id") int id){
+    public Lending getLending(@PathVariable("id") int id){
         return lendingService.getLending(id);
     }
 
@@ -31,21 +31,20 @@ public class LendingController {
 
     @PutMapping("/lending/{id}")
     public Lending updateLending(@PathVariable("id") int id, @RequestBody Lending lending){
-        Optional<Lending> l = lendingService.getLending(id);
-        if (l.isPresent()){
-            Lending currentLending = l.get();
+        Lending l = lendingService.getLending(id);
+        if (l != null){
+            Lending currentLending = l;
 
-            String start = lending.getStart();
-            if (start != null){
-                currentLending.setStart(start);
+            if (lending.getStart() != null){
+                currentLending.setStart(lending.getStart());
             }
-            String end = lending.getEnd();
-            if (end != null){
-                currentLending.setEnd(end);
+
+            if (lending.getEnd() != null){
+                currentLending.setEnd(lending.getEnd());
             }
-            boolean extended = lending.isExtended();
-            if (extended != false){
-                currentLending.setExtended(extended);
+
+            if (currentLending.isExtended() != lending.isExtended()){
+                currentLending.setExtended(lending.isExtended());
             }
             lendingService.saveLending(currentLending);
             return currentLending;

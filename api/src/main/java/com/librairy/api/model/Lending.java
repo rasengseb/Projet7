@@ -3,6 +3,7 @@ package com.librairy.api.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Calendar;
 
 @Data
 @Entity
@@ -15,10 +16,10 @@ public class Lending {
     private int id;
 
     @Column(name = "start")
-    private String start;
+    private Calendar start;
 
     @Column(name = "end")
-    private String end;
+    private Calendar end;
 
     private boolean extended;
 
@@ -29,4 +30,16 @@ public class Lending {
     @OneToOne
     @JoinColumn(name = "idCopy")
     private Copy copy;
+
+    public Lending(int id, Calendar start, Calendar end, boolean extended, User user, Copy copy) {
+        this.id = id;
+        this.start = start;
+        this.end = end;
+        this.extended = extended;
+        this.user = user;
+        this.copy = copy;
+    }
+
+    public Lending() {
+    }
 }
