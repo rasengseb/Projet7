@@ -10,13 +10,11 @@
 
 <div th:insert="header :: header"></div>
 
-<div class="container container-fluid">
+<div class="container container-fluid" style="margin-top: 100px">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-emprunt-tab" data-toggle="tab" href="#nav-emprunt" role="tab"
                aria-controls="nav-emprunt" aria-selected="true">Emprunts</a>
-            <a class="nav-item nav-link" id="nav-infos-tab" data-toggle="tab" href="#nav-infos" role="tab"
-               aria-controls="nav-infos" aria-selected="false">Infos</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -36,10 +34,10 @@
                 </tr>
                 <tr th:each="lending: ${lendings}">
                     <td><span th:text="${lending.getCopy().getBook().getTitle()}">Titre</span></td>
-                    <td><span th:text="${lending.getStart()}">Début :</span></td>
-                    <td><span th:text="${lending.getEnd()}">Fin :</span></td>
+                    <td><span th:text="${lending.getStart().getTime()}">Début :</span></td>
+                    <td><span th:text="${lending.getEnd().getTime()}">Fin :</span></td>
                     <form th:action="@{/lending/{id}(id=${lending.getId()})}" th:object="${lendings}" method="post">
-                        <td>
+                        <td th:if="${!lending.isExtended()}">
                             <button type="submit" class="btn btn-dark">Prolonger</button>
                         </td>
                     </form>
