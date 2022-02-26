@@ -35,10 +35,4 @@ public class LendingService {
         return lendingRepository.findAllByUserId(id);
     }
 
-//    public List<Lending> getOutdatedLending(){
-//        List<Lending> outdated = new ArrayList<>();
-//        List<Lending> lendings = getLendings();
-//
-//        return outdated;
-//    }
 }

@@ -5,8 +5,9 @@ import com.librairy.api.service.LendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class LendingController {
@@ -62,6 +63,18 @@ public class LendingController {
     @GetMapping("/lendings/{id}")
     List<Lending> findLendingByUser(@PathVariable("id") int id){
         return lendingService.findAllLendingByUser(id);
+    }
+
+    @GetMapping("/lendings")
+    List<Lending> getAllDelay(){
+        List<Lending> allLending = (List) lendingService.getLendings();
+        List<Lending> delay = new ArrayList();
+        for (int i=0; i<allLending.size(); i++){
+            if (allLending.get(i).getEnd().before(Calendar.getInstance().getTime())){
+                delay.add(allLending.get(i));
+            }
+        }
+        return delay;
     }
 
 }
