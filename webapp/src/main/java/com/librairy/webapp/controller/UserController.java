@@ -19,6 +19,11 @@ public class UserController {
     private UserService userService;
 
 
+    /**
+     * Enregistrement d'un nouveau User
+     * @param model Données User
+     * @return Page web
+     */
     @GetMapping("/user")
     public String inscrpition(Model model){
         User user = new User();
@@ -28,6 +33,11 @@ public class UserController {
         return "SignIn";
     }
 
+    /**
+     * Enregistre un User
+     * @param user à enregistrer
+     * @return page web
+     */
     @PostMapping("/user")
     public String createUser(@ModelAttribute User user){
         User savedUser = userService.createUser(user);

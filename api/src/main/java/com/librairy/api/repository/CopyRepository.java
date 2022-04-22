@@ -9,5 +9,10 @@ import java.util.List;
 @Repository
 public interface CopyRepository extends CrudRepository<Copy, Integer> {
 
+    /**
+     * Trouve toutes les Copy contenant le Book
+     * @param id Book
+     * @return List Copy
+     */
     List<Copy> getAllByBookId(int id);
 }

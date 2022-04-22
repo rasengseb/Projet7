@@ -13,6 +13,7 @@ public class LibrairyController {
     @Autowired
     private LibrairyService librairyService;
 
+
     @GetMapping("/librairy")
     public String librairies(Model model){
         Iterable<Librairy> listLibrairy = librairyService.getLibrairies();

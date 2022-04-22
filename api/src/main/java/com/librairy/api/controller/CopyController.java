@@ -16,21 +16,30 @@ public class CopyController {
     @Autowired
     private CopyService copyService;
 
-//    @GetMapping("/copy/{id}")
-//    public Optional<Copy> getCopy(@PathVariable("id") int id) {
-//        return copyService.getCopy(id);
-//    }
-
+    /**
+     * Enregistre une Copy
+     * @param copy à enregistrer
+     * @return Copy enregistré
+     */
     @PostMapping("/copy")
     public Copy createCopy(@RequestBody Copy copy) {
         return copyService.saveCopy(copy);
     }
 
+    /**
+     * Supprime une Copy
+     * @param id Copy à supprimer
+     */
     @DeleteMapping("/copy/{id}")
     public void deleteCopy(@PathVariable("id") int id){
         copyService.deleteCopy(id);
     }
 
+    /**
+     * Cherche une Copy par Book
+     * @param id Book cherché
+     * @return List Copy
+     */
     @GetMapping("/copy/{id}")
     public List<Copy> GetCopyByBook(@PathVariable int id){
         return copyService.getCopyByBook(id);

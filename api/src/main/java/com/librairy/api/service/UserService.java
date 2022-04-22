@@ -15,34 +15,66 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User getUser(String pseudo){
+    /**
+     * Récupère les informations d'un utilisateur
+     *
+     * @param pseudo de l'utilisateur cherché
+     * @return utilisateur
+     */
+    public User getUser(String pseudo) {
         return userRepository.findByPseudo(pseudo);
     }
 
-    public User getUser(int id){
+    /**
+     * Récupère les informations d'un utilisateur
+     *
+     * @param id utilisateur cherché
+     * @return utilisateur
+     */
+    public User getUser(int id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public Iterable<User> getUsers(){
+    /**
+     * Recherche tous les utilisateurs enregistrés
+     *
+     * @return List des utilisateurs enregistrés
+     */
+    public Iterable<User> getUsers() {
         return userRepository.findAll();
     }
 
-    public void deleteUser (int id){
+    /**
+     * Supprime un utilisateur
+     *
+     * @param id utilisateur à supprimer
+     */
+    public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
 
-    public User saveUser(User user){
+    /**
+     * Enregistre l'utilisateur
+     * @param user utilisateur à enregistrer
+     * @return utilisateur enregistré
+     */
+    public User saveUser(User user) {
         user.setMdp(passwordEncoder.encode(user.getMdp()));
         User savedUser = userRepository.save(user);
         return savedUser;
     }
 
-    public boolean doublonCheck (User user){
-        if(userRepository.findByPseudo(user.getPseudo()) == null){
+    /**
+     * Vérifie que le pseudo ou le mail n'est pas déjà utilisé
+     * @param user utilisateur à tester
+     * @return présence ou non en BDD
+     */
+    public boolean doublonCheck(User user) {
+        if (userRepository.findByPseudo(user.getPseudo()) == null) {
             return true;
-        } else if(userRepository.findByMail(user.getMail()) == null){
+        } else if (userRepository.findByMail(user.getMail()) == null) {
             return true;
-        } else{
+        } else {
             return false;
         }
     }

@@ -14,6 +14,11 @@ public class CopyService {
     @Autowired
     private CopyProxy copyProxy;
 
+    /**
+     * Recherche les Copy par Book
+     * @param id Book
+     * @return List Copy
+     */
     public List<Copy> getCopyByBook(int id){
         return copyProxy.getCopyByBook(id);
     }

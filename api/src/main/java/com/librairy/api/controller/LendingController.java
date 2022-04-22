@@ -15,21 +15,41 @@ public class LendingController {
     @Autowired
     private LendingService lendingService;
 
+    /**
+     * Récupère un prêt spécifique
+     * @param id lending voulu
+     * @return lending
+     */
     @GetMapping("/lending/{id}")
     public Lending getLending(@PathVariable("id") int id){
         return lendingService.getLending(id);
     }
 
+    /**
+     * Ajout un prêt
+     * @param lending données à ajouté
+     * @return lending ajouté
+     */
     @PostMapping("/lending")
     public Lending createLending(@RequestBody Lending lending){
         return lendingService.saveLending(lending);
     }
 
+    /**
+     * Récupère tous les lending
+     * @return List des lendings
+     */
     @GetMapping("/lending")
     public Iterable<Lending> getLendings(){
         return lendingService.getLendings();
     }
 
+    /**
+     * Mise à jour d'un lending
+     * @param id lending à modifier
+     * @param lending nouvelles donées à ajouter
+     * @return lending mis à jour
+     */
     @PutMapping("/lending/{id}")
     public Lending updateLending(@PathVariable("id") int id, @RequestBody Lending lending){
         Lending l = lendingService.getLending(id);
@@ -55,23 +75,36 @@ public class LendingController {
         }
     }
 
+    /**
+     * Supprime un lending
+     * @param id lending à supprimer
+     */
     @DeleteMapping("/lending/{id}")
     public void deleteLending(@PathVariable("id") int id){
         lendingService.deleteLending(id);
     }
 
+    /**
+     * Cherche les prêts d'un utilisateur
+     * @param id id de l'utilisateur
+     * @return list des prêts de l'utilisateur
+     */
     @GetMapping("/lendings/{id}")
     List<Lending> findLendingByUser(@PathVariable("id") int id){
         return lendingService.findAllLendingByUser(id);
     }
 
+    /**
+     * Récupère tous les prêts et renvoie les retards
+     * @return list des retards
+     */
     @GetMapping("/lendings")
-    List<Lending> getAllDelay(){
-        List<Lending> allLending = (List) lendingService.getLendings();
-        List<Lending> delay = new ArrayList();
-        for (int i=0; i<allLending.size(); i++){
-            if (allLending.get(i).getEnd().before(Calendar.getInstance().getTime())){
-                delay.add(allLending.get(i));
+    List<Lending> getAllDelay() {
+        List<Lending> allLending = lendingService.getLendings();
+        List<Lending> delay = new ArrayList<>();
+        for (Lending lending : allLending) {
+            if (lending.getEnd().before(Calendar.getInstance())) {
+                delay.add(lending);
             }
         }
         return delay;

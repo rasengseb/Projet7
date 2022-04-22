@@ -17,11 +17,21 @@ public class UserController {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    /**
+     * Cherche un User
+     * @param id User cherché
+     * @return User
+     */
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable("id") int id){
         return userService.getUser(id);
     }
 
+    /**
+     * Enregistre un User
+     * @param user à enregistrer
+     * @return User enregistré
+     */
     @PostMapping("/user")
     public User createUser(@RequestBody User user){
         if(!userService.doublonCheck(user)){
@@ -31,6 +41,12 @@ public class UserController {
         }
     }
 
+    /**
+     * Mise à jour d'un User
+     * @param id User dans la BDD
+     * @param user nouveau
+     * @return User nouveau
+     */
     @PutMapping("/user/{id}")
     public User updateUser(@PathVariable("id") int id, @RequestBody User user){
         User u = userService.getUser(id);
@@ -68,6 +84,10 @@ public class UserController {
         }
     }
 
+    /**
+     * Supprime un User
+     * @param id User à supprimer
+     */
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
